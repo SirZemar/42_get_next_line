@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jose-ero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/02 21:27:41 by jose-ero          #+#    #+#             */
-/*   Updated: 2023/11/02 21:27:42 by jose-ero         ###   ########.fr       */
+/*   Created: 2023/09/20 21:27:41 by jose-ero          #+#    #+#             */
+/*   Updated: 2023/11/04 18:00:14 by jose-ero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,10 @@
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 42
+# endif
+
+# ifndef MAX_OFILE
+#  define MAX_OFILE FOPEN_MAX
 # endif
 
 void	*ft_calloc(size_t nmemb, size_t size);

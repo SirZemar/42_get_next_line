@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jose-ero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/02 21:26:54 by jose-ero          #+#    #+#             */
-/*   Updated: 2023/11/02 22:52:14 by jose-ero         ###   ########.fr       */
+/*   Created: 2023/09/09 21:26:54 by jose-ero          #+#    #+#             */
+/*   Updated: 2023/11/04 17:59:38 by jose-ero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ char	*get_next_line(int fd)
 
 char	*get_new_line(char *stash)
 {
-	char	*tmp;
+	char	*line;
 	int		i;
 
 	if (!*stash)
@@ -51,25 +51,25 @@ char	*get_new_line(char *stash)
 	i = 0;
 	while (stash[i] && stash[i] != '\n')
 		i++;
-	tmp = ft_calloc(i + 2, sizeof(char));
+	line = ft_calloc(i + 2, sizeof(char));
 	i = 0;
 	while (stash[i] && stash[i] != '\n')
 	{
-		tmp[i] = stash[i];
+		line[i] = stash[i];
 		i++;
 	}
-	tmp[i] = stash[i];
-	return (tmp);
+	line[i] = stash[i];
+	return (line);
 }
 
 char	*get_rest(char *stash)
 {
-	char	*tmp;
+	char	*rest;
 	int		i;
-	int		index;
+	int		j;
 
-	index = 0;
 	i = 0;
+	j = 0;
 	while (stash[i] && stash[i] != '\n')
 		i++;
 	if (!*stash)
@@ -77,12 +77,12 @@ char	*get_rest(char *stash)
 		free(stash);
 		return (NULL);
 	}
-	tmp = ft_calloc(ft_strlen(stash) - i + 1, sizeof(char));
+	rest = ft_calloc(ft_strlen(stash) - i + 1, sizeof(char));
 	while (stash[i])
-		tmp[index++] = stash[++i];
-	tmp[index] = '\0';
+		rest[j++] = stash[++i];
+	rest[j] = '\0';
 	free(stash);
-	return (tmp);
+	return (rest);
 }
 
 void	*ft_free(char **stash, char **buffer)
@@ -93,21 +93,14 @@ void	*ft_free(char **stash, char **buffer)
 	return (NULL);
 }
 
-/* int main()
-{
-    int fd;
+// int main()
+// {
+//     int fd1;
 
-    char *ptr;
-    fd = open("text.txt", O_RDONLY);
-    ptr = get_next_line(fd);
-    printf("%s", ptr);
-    free(ptr);
-
-    ptr = get_next_line(fd);
-    printf("%s", ptr);
-    free(ptr);
-
-    ptr = get_next_line(fd);
-    printf("%s", ptr);
-    free(ptr);
-} */
+//     char *ptr;
+	
+//     fd1 = open("text.txt", O_RDONLY);
+//     ptr = get_next_line(fd1);
+//     printf("%s", ptr);
+//     free(ptr);
+// }
